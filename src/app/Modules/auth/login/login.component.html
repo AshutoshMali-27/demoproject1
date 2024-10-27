@@ -1,0 +1,22 @@
+<div class="p-5">
+    <app-cards>
+        <header></header>
+        <content>
+            <h1 class="text-center"> Login</h1>
+            <form (ngsubmit)="onlogin()" [formGroup]="form" >
+                <div class="form-group" >
+                    <app-controlcontainers label="Username" type="required">
+                        <input type="text" formControlName="username" placeholder="john Doe" autocomplete="username"  class="form-control" id="username" >
+                    </app-controlcontainers>
+                </div>
+                <div class="form-group">
+          
+                    <app-controlcontainers label="Password" type="required" >
+                    <input type="password"  formControlName="password"  placeholder="Password" autocomplete="current-password" class="form-control" id="password"    >
+                  </app-controlcontainers>
+                  </div>
+                  <app-savebtn type="submit" label="login" (click)="onlogin()" [disabled]="false" buttonClass="btn btn-success" buttonClass="m-2" ></app-savebtn>
+            </form>
+        </content>
+    </app-cards>
+</div>
