@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Observable } from "rxjs";
-// import { SERVER_URL } from "../constants/constant";
-import { HttpClientModule } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-	private baseUrl = "https//localhost:3000/users";
+	private baseUrl = 'https://localhost:7281' ;
 
 	constructor(private http: HttpClient) {
 	}

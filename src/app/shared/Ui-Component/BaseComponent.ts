@@ -7,7 +7,7 @@ import { ActiveToast, ToastrService } from "ngx-toastr";
 
 export abstract class BaseComponent{
 
-    isMobileDevoce=window.innerWidth<760;
+    //isMobileDevoce=window.innerWidth<760;
     router:Router;
     isLoading=false;
     isLoggedIn=false;
@@ -35,9 +35,9 @@ export abstract class BaseComponent{
         this.activateRouter=injector.get(ActivatedRoute);
         this.LoadingService=injector.get(LoaderService);
         this.fb=injector.get(UntypedFormBuilder);
-        this.authservice.authStatus.subscribe((isLoggedIn)=>{
-            this.isLoggedIn=isLoggedIn;
-        });
+        // this.authservice.authStatus.subscribe((isLoggedIn)=>{
+        //     this.isLoggedIn=isLoggedIn;
+        // });
      
        
     }

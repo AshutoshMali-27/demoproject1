@@ -14,7 +14,7 @@ export class LoginComponent extends BaseComponent {
   form:UntypedFormGroup;
   login:Login
   isLogging=false;
-  
+
   constructor(injector:Injector,private service:AuthenticationService){
     super(injector);
   }
@@ -24,6 +24,7 @@ export class LoginComponent extends BaseComponent {
     
   }
   onlogin(){
+    debugger;
     debugger;
     this.LoadingService.setLoading(true);
     if(this.form.valid){

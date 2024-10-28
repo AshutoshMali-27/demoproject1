@@ -12,7 +12,7 @@ import { StorageService } from './storage.service';
 })
 export class AuthenticationService {
 
-  protected endpoint = AUTH_PATH;
+  protected endpoint = 'https://localhost:7281/api/Auth/'  ;
   protected CurrentUserSubject: BehaviorSubject<Userinfo | null>;
   public currentUser: Observable<Userinfo | null>;
   public redirectUrl: string;
@@ -26,8 +26,8 @@ export class AuthenticationService {
   ) {
     this.CurrentUserSubject = new BehaviorSubject<Userinfo | null>(this.StorageService.getUser());
     this.currentUser = this.CurrentUserSubject.asObservable();
-    this.loggedIn = new BehaviorSubject<boolean>(this.StorageService.loggedIn());  // Moved initialization here
-    this.authStatus = this.loggedIn.asObservable();
+    //this.loggedIn = new BehaviorSubject<boolean>(this.StorageService.loggedIn());  // Moved initialization here
+    //this.authStatus = this.loggedIn.asObservable();
   }
 
   setUserSession(user: Userinfo, accessToken: string): void {
@@ -48,7 +48,7 @@ export class AuthenticationService {
   clearUserSession(): void {
     this.CurrentUserSubject.next(null);
     this.StorageService.removeUser();
-    this.StorageService.removeToken();
+ //   this.StorageService.removeToken();
     this.changeAuthStatus(false);
   }
 

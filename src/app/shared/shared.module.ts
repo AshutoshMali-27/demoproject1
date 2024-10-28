@@ -37,7 +37,7 @@ COMMON_STANDALONE_COMP_LIST
     CommonModule,
    FormsModule,
    ReactiveFormsModule,
-   RouterModule,
+   RouterModule
 
   
   
