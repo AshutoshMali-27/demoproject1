@@ -3,11 +3,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, Injector } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BaseComponent } from './shared/Ui-Component/BaseComponent';
+import { SidebarComponent } from "./shared/Layout/sidebar/sidebar.component";
+import { NavbarComponent } from "./shared/Layout/navbar/navbar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,NgClass],
+  imports: [RouterOutlet, NgClass, SidebarComponent, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -16,7 +18,7 @@ export class AppComponent extends BaseComponent {
 
   constructor(injector:Injector){
     super(injector);
-   // initFlowbite()
+  
   }
 
   ngOnInit(): void {

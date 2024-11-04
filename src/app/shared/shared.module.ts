@@ -9,6 +9,11 @@ import { SavebtnComponent } from './Component/savebtn/savebtn.component';
 import { ApplogoComponent } from './Component/applogo/applogo.component';
 import { RouterModule } from '@angular/router';
 import { PopoversComponent } from './popovers/popovers.component';
+import { Card2Component } from './Component/card2/card2.component';
+import { ModelpopupComponent } from './Component/modelpopup/modelpopup.component';
+import { HideifemptyDirective } from './Directive/hideifempty.directive';
+
+
 
 const COMMON_STANDALONE_COMP_LIST: any[] | Type<any> = [
   HeaderComponent,
@@ -17,7 +22,11 @@ const COMMON_STANDALONE_COMP_LIST: any[] | Type<any> = [
   CardsComponent,
   SavebtnComponent,
   ApplogoComponent,
-  PopoversComponent
+  PopoversComponent,
+  Card2Component,
+  ModelpopupComponent,
+  HideifemptyDirective
+  
 ];
 
 
@@ -30,14 +39,17 @@ const COMMON_STANDALONE_COMP_LIST: any[] | Type<any> = [
 // SavebtnComponent,
 // ApplogoComponent,
 // PopoversComponent
-COMMON_STANDALONE_COMP_LIST
+COMMON_STANDALONE_COMP_LIST,
+//SidebarItemComponent,
+
   ],
   imports: [
     
     CommonModule,
    FormsModule,
    ReactiveFormsModule,
-   RouterModule
+   RouterModule,
+   
 
   
   

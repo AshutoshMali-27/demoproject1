@@ -4,9 +4,9 @@
 
 export const environment = {
     production: false,
-    domainName: "localhost",
+    domainName: "localhost:7202",
     websiteUrl: "https://demoproject.com",
-    baseUrl: "localhost",
+    baseUrl: "localhost:7202",
     frontendBaseUrl: "http://localhost:4200",
 };
 

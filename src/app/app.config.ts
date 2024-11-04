@@ -4,7 +4,11 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';  // Import from '@angular/common/http'
 
 import { routes } from './app.routes';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideToastr } from 'ngx-toastr';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+//import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,5 +17,11 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideRouter(routes),
       provideHttpClient(withInterceptors([AuthInterceptor])), // Use provideHttpClient from the correct module
+      provideAnimations(), // required animations providers
+      provideToastr({
+          timeOut: 3000,
+          positionClass: 'toast-top-right',
+          preventDuplicates: true,
+      }),
   ]
 };

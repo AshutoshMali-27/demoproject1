@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
-import { AUTH_PATH } from '../constants/constant';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Userinfo } from '../Models/Userinfo';
-
 import { ApiService } from './api.service';
-import { Router } from '@angular/router';
 import { StorageService } from './storage.service';
+import { AUTH_PATH } from '../constants/constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  protected endpoint = 'https://localhost:7281/api/Auth/'  ;
+  // protected endpoint = 'auth/'  ;
+  //protected endpoint = 'LoginApi/'  ;
+  protected endpoint = AUTH_PATH  ;
   protected CurrentUserSubject: BehaviorSubject<Userinfo | null>;
   public currentUser: Observable<Userinfo | null>;
   public redirectUrl: string;
   protected loggedIn: BehaviorSubject<boolean>;
-  authStatus: Observable<boolean>;
+  public authStatus: Observable<boolean>;
 
   constructor(
     protected api: ApiService,
@@ -26,19 +27,25 @@ export class AuthenticationService {
   ) {
     this.CurrentUserSubject = new BehaviorSubject<Userinfo | null>(this.StorageService.getUser());
     this.currentUser = this.CurrentUserSubject.asObservable();
-    //this.loggedIn = new BehaviorSubject<boolean>(this.StorageService.loggedIn());  // Moved initialization here
-    //this.authStatus = this.loggedIn.asObservable();
+    this.loggedIn = new BehaviorSubject<boolean>(this.StorageService.loggedIn());  // Moved initialization here
+    this.authStatus = this.loggedIn.asObservable();
   }
 
-  setUserSession(user: Userinfo, accessToken: string): void {
+  setUserSession(user: Userinfo, token: string): void {
     this.CurrentUserSubject.next(user);
     this.StorageService.steUser(user);
+    this.StorageService.setToken(token);
     this.changeAuthStatus(true);
-    this.router.navigate(["/dashboard"]).then(r => true);
+    if (user.utypeId === 2) {
+      this.router.navigate(["dashboard1"]).then(r => true);
+  } else {
+      this.router.navigate(["/home"]).then(r => true); // Redirect to home if UtypeId is not 2
+  }
+   // this.router.navigate(["/dashboard"]).then(r => true);
   }
 
   login(data: object): Observable<any> {
-    return this.api.post(this.endpoint + "login", data);
+    return this.api.getWithParams(this.endpoint + "login", data);
   }
 
   logout(): Observable<any> {
@@ -48,7 +55,7 @@ export class AuthenticationService {
   clearUserSession(): void {
     this.CurrentUserSubject.next(null);
     this.StorageService.removeUser();
- //   this.StorageService.removeToken();
+    this.StorageService.removeToken();
     this.changeAuthStatus(false);
   }
 

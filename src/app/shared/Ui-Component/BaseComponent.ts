@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AuthenticationService } from "../Services/authentication.service";
 import { LoaderService } from "../Services/loader.service";
 import { ActiveToast, ToastrService } from "ngx-toastr";
+import { StorageService } from "../Services/storage.service";
 
 export abstract class BaseComponent{
 
@@ -16,6 +17,7 @@ export abstract class BaseComponent{
     userPermissionList:string|any[]=null;
     fb:UntypedFormBuilder;
     authservice: AuthenticationService;
+    storageservice:StorageService
     LoadingService:LoaderService;
 	notifyService: ToastrService;
 
@@ -29,15 +31,16 @@ export abstract class BaseComponent{
 
     constructor(injector:Injector){
 
-
+debugger;
         this.router=injector.get(Router);
         this.authservice=injector.get(AuthenticationService);
+        this.notifyService=injector.get(ToastrService);
         this.activateRouter=injector.get(ActivatedRoute);
         this.LoadingService=injector.get(LoaderService);
         this.fb=injector.get(UntypedFormBuilder);
-        // this.authservice.authStatus.subscribe((isLoggedIn)=>{
-        //     this.isLoggedIn=isLoggedIn;
-        // });
+        this.authservice.authStatus.subscribe((isLoggedIn)=>{
+            this.isLoggedIn=isLoggedIn;
+        });
      
        
     }
@@ -90,9 +93,14 @@ export abstract class BaseComponent{
 			.subscribe()
 			.add(() => {
 				this.authservice.clearUserSession();
+                
 				setTimeout(() => {
 					this.router.navigate(["/"]);
 				}, 10);
 			});
+	}
+
+    setLoader(value:boolean) {
+		this.isLoading = value;
 	}
 }

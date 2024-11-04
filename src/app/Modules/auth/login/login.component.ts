@@ -25,7 +25,6 @@ export class LoginComponent extends BaseComponent {
   }
   onlogin(){
     debugger;
-    debugger;
     this.LoadingService.setLoading(true);
     if(this.form.valid){
       this.isLogging=true;
@@ -35,12 +34,20 @@ export class LoginComponent extends BaseComponent {
     // this.router.navigate(['home']);
       this.service.login(this.form.value).subscribe({
         next:Response=>{
-          this.service.setUserSession(Response.user,Response.accessToken);
-        
+          this.notify("Login successfully!");
+          console.log("Login Response:", Response); 
+        this.service.setUserSession(Response.user,Response.token);
+          
+       
+          // this.notify(`login Successful ! ${Response?.success?.text}`,this.NOTIFICATION_Types.SUCCESS);
+         // this.notify(`Login Successful! ${Response?.success?.text ?? "Operation completed successfully."}`, this.NOTIFICATION_Types.SUCCESS);
+         
         },
         error:errorResponse=>{
+          debugger;
+          console.error("Error Logging in:", errorResponse);
           console.log("Error Logging in", errorResponse?.error?.text);
-        //  this.notify(`login Failed ! ${errorResponse?.error?.text}`,this.NOTIFICATION_Types.ERROR);
+         this.notify(`login Failed ! ${errorResponse?.error?.text}`,this.NOTIFICATION_Types.ERROR);
         }
       }).add(()=>{
         this.isLogging=false;

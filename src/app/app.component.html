@@ -1,2 +1,62 @@
 
-<router-outlet></router-outlet>
+
+<!-- <div class="flex w-screen h-screen">
+	@if (isLoggedIn) {
+	<app-sidebar></app-sidebar>
+	}
+	<div class="grow bg-white dark:bg-gray-400 dark:text-white">
+		@if (isLoggedIn) {
+			<app-navbar></app-navbar>
+		}
+		<div>
+			<router-outlet/>
+		</div>
+	</div>
+
+</div> -->
+
+<div class="d-flex" style="width: 100%;">
+    @if (isLoggedIn) {
+        <div id="sidebar" style="border: 1px solid black; width: 15%; height: 100vh;" >
+            <app-sidebar></app-sidebar> 
+        </div>
+    }
+ 
+        <div id="navbar" style="border: 1px solid black;  height: 10vh;" [style.width]="isLoggedIn ? '85%' : '100%'" >
+            @if (isLoggedIn) {
+            <app-navbar></app-navbar>
+            }
+            <div [style.padding]="isLoggedIn?'10px':'0px'">
+                <router-outlet></router-outlet>
+            </div>
+        
+        </div>
+    
+
+       
+  
+    
+ 
+</div>
+
+<!-- <div  class="d-flex" style="width: 100%;"> -->
+    <!-- @if (isLoggedIn) { -->
+    <!-- <div id="sidebar"  style="border:1px solid black;width:15%;height: 100vh;" > -->
+    <!--  -->
+        <!-- <app-sidebar></app-sidebar>  -->
+           <!--  -->
+            <!-- </div> -->
+        <!-- } -->
+        <!-- @if (isLoggedIn) { -->
+            <!-- <div id="navbar"  style="border:1px solid black;width:85%;height: 10vh;" > -->
+    <!--  -->
+                <!-- <app-navbar></app-navbar> -->
+              <!--  -->
+                <!-- </div> -->
+                <!-- } -->
+                <!--  -->
+                    <!-- <router-outlet></router-outlet> -->
+                <!--  -->
+<!--  -->
+                <!--  -->
+                    <!-- </div> -->
