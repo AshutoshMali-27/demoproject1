@@ -5,6 +5,50 @@
     </div>
     <div content1>
       <h6>This is the card content.</h6>
+      <form >
+        <div class="row">
+          <div class="col-md-4">
+            <app-controlcontainers label="username" type="required" position="aside" >
+              <input type="text" formControlName="username" placeholder="john Doe" autocomplete="username" class="form-control" id="username">
+            </app-controlcontainers>
+          </div>
+
+          <div class="col-md-4">
+            <app-controlcontainers label="email" type="required" position="aside" >
+              <input type="text" formControlName="email" placeholder="john Doe" autocomplete="username" class="form-control" id="email">
+            </app-controlcontainers>
+          </div>
+          <div class="col-md-4">
+            <app-controlcontainers label="phoneno" type="required" position="aside" >
+              <input type="text" formControlName="phoneno" placeholder="john Doe" autocomplete="username" class="form-control" id="phoneno">
+            </app-controlcontainers>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+          <app-controlcontainers label="city" type="required" position="aside" >
+            <input type="text" formControlName="city" placeholder="john Doe" autocomplete="username" class="form-control" id="city">
+          </app-controlcontainers>
+        </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-8">
+          <app-controlcontainers label="Name" type="required" position="aside" >
+            <app-dropdown
+            [options]="dropdownOptions"
+            buttonLabel="Choose an Option"
+            [isDisabled]="false"
+
+            (optionSelected)="handleOptionSelected($event)" >
+          </app-dropdown>
+
+          </app-controlcontainers>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-success m-2">Save</button>
+      </form>
       </div>
     <div footer > </div>
   </app-card2>

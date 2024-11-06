@@ -1,0 +1,24 @@
+<div class="dropdown">
+  <button 
+    id="dropdownActionButton" 
+    class="btn btn-light border dropdown-toggle d-flex align-items-center"
+    [style.width.px]="dropdownWidth"
+    type="button" 
+    [attr.disabled]="isDisabled ? true : null"
+    data-bs-toggle="dropdown" 
+    aria-expanded="false">
+    <span class="visually-hidden">{{ buttonLabel }} button</span>
+    {{ buttonLabel }}
+  </button>
+
+  <!-- Dropdown menu with auto width -->
+  <ul class="dropdown-menu w-auto " aria-labelledby="dropdownActionButton">
+    <li *ngFor="let option of options">
+      <a href="#" class="dropdown-item" (click)="onSelectOption(option.id)">
+        {{ option.label }}
+      </a>
+    </li>
+  </ul>
+</div>
+
+

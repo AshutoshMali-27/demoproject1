@@ -1,8 +1,20 @@
-<label [ngClass]="{'disabled': disabled}" [ngStyle]="{'color': color, 'font-size': fontSize, 'font-weight': fontWeight}">
+<!-- <label [ngClass]="{'disabled': disabled}" [ngStyle]="{'color': color, 'font-size': fontSize, 'font-weight': fontWeight}">
     <i [ngClass]="icon" *ngIf="icon"></i>
     {{ label }}
     <span class="tooltip" *ngIf="tooltip">{{ tooltip }}</span>
   </label>
   <ng-content></ng-content>
 
+ -->
 
+
+ <div [ngClass]="{'top-layout': position === 'top', 'aside-layout': position === 'aside'}">
+  <label 
+    [ngClass]="{'disabled': disabled}" 
+    [ngStyle]="{'color': color, 'font-size': fontSize, 'font-weight': fontWeight}">
+    <i [ngClass]="icon" *ngIf="icon"></i>
+    {{ label }}
+    <span class="tooltip" *ngIf="tooltip">{{ tooltip }}</span>
+  </label>
+  <ng-content></ng-content>
+</div>

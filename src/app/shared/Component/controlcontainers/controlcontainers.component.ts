@@ -8,14 +8,15 @@ import { Component,Input } from '@angular/core';
 export class ControlcontainersComponent {
 
    
-  @Input() label: string = '';  // Input property for label text
-  @Input() type: string = '';  // Input property for label type
-  @Input() color: string = '';  // Input property for label color
-  @Input() fontSize: string = '';  // Input property for font size
-  @Input() fontWeight: string = '';  // Input property for font weight
-  @Input() tooltip: string = '';  // Input property for tooltip
-  @Input() icon: string = '';  // Input property for icon
-  @Input() disabled: boolean = false;  // Input property for disabled state
+  @Input() label: string = '';         // Label text
+  @Input() type: string = '';           // Type for additional customization
+  @Input() color: string = '';          // Label color
+  @Input() fontSize: string = '';       // Font size
+  @Input() fontWeight: string = '';     // Font weight
+  @Input() tooltip: string = '';        // Tooltip text
+  @Input() icon: string = '';           // Icon class
+  @Input() disabled: boolean = false;   // Disabled state
+  @Input() position: 'top' | 'aside' = 'top';
 	
 
 }

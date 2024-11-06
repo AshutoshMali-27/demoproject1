@@ -12,6 +12,7 @@ import { PopoversComponent } from './popovers/popovers.component';
 import { Card2Component } from './Component/card2/card2.component';
 import { ModelpopupComponent } from './Component/modelpopup/modelpopup.component';
 import { HideifemptyDirective } from './Directive/hideifempty.directive';
+import { DropdownComponent } from './Component/dropdown/dropdown.component';
 
 
 
@@ -25,22 +26,16 @@ const COMMON_STANDALONE_COMP_LIST: any[] | Type<any> = [
   PopoversComponent,
   Card2Component,
   ModelpopupComponent,
-  HideifemptyDirective
+  HideifemptyDirective,
+  DropdownComponent
   
 ];
 
 
 @NgModule({
   declarations: [
-// HeaderComponent,
-// FooterComponent,
-// ControlcontainersComponent,
-// CardsComponent,
-// SavebtnComponent,
-// ApplogoComponent,
-// PopoversComponent
-COMMON_STANDALONE_COMP_LIST,
-//SidebarItemComponent,
+
+COMMON_STANDALONE_COMP_LIST
 
   ],
   imports: [
